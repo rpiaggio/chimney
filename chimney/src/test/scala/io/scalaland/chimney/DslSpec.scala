@@ -157,6 +157,16 @@ class DslSpec extends WordSpec with MustMatchers {
         Map("test" -> Foo("a")).transformInto[Map[String, Bar]] mustBe Map("test" -> Bar("a"))
       }
     }
+
+    "support combination of features" in {
+      case class NewEntity(name: Option[String])
+      case class Entity(id: Long, name: Option[String], isDeleted: Boolean)
+
+      NewEntity(Some("name")).into[Entity]
+        .withFieldConst('id, 0L)
+        .withFieldConst('isDeleted, false)
+        .transform mustBe Entity(0L, Some("name"), false)
+    }
   }
 }
 
