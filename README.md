@@ -61,6 +61,12 @@ To include Chimney to your SBT project, add the following line to your `build.sb
 libraryDependencies += "io.scalaland" %% "chimney" % "0.1.8"
 ```
 
+or test it immediatelly in Ammonite with:
+
+```scala
+import $ivy.`io.scalaland:chimney_2.12:0.1.8`, io.scalaland.chimney.dsl._
+```
+
 Library is released for Scala 2.11 and 2.12.
 If you want to use it with Scala.js, you need to replace `%%` with `%%%`.
 Due to some [compiler bugs](https://issues.scala-lang.org/browse/SI-7046),
